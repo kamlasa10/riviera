@@ -1,0 +1,81 @@
+.socials {
+  display: flex;
+  align-items: center;
+
+  &__link {
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .4s;
+
+    svg {
+      stroke: #fff;
+      transition: all .4s;
+      fill: none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    &:hover {
+      border-color: transparent;
+      background-color: #9BB8D3;
+
+      svg {
+        stroke: #1D252D;
+      }
+    }
+
+    &--1 {
+      svg {
+        width: 12px;
+        height: 20px;
+
+        @include to(1440px) {
+          width: 10px;
+          height: 18px;
+        }
+      }
+    }
+
+    &--2 {
+      svg {
+        stroke: transparent;
+        fill: #fff;
+        width: 27px;
+        height: 21px;
+
+        @include to(1440px) {
+          width: 17px;
+          height: 17px;
+        }
+      }
+
+      &:hover {
+        svg {
+          stroke: transparent;
+          fill: #1D252D;
+        }
+      }
+    }
+
+    &--3 {
+      svg {
+        width: 21px;
+        height: 16px;
+
+        @include to(1440px) {
+          width: 19px;
+          height: 14px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+.header {
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  height: $header-height;
+  --header-height: 120px;
+  transition: all .4s;
+  background-color: #1D252D;
+
+  .container {
+    height: 100%;
+  }
+
+  &.moving {
+    height: 105px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    height: calc(var(--header-height) - 30px);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__text {
+    max-width: 250px;
+    font-size: 21px;
+    line-height: 1.2em;
+    color: #9BB8D3;
+    text-transform: uppercase;
+
+    @include to(1440px) {
+      font-size: 19px;
+    }
+  }
+
+  &__phone {
+    &-text {
+      color: #9BB8D3;
+    }
+
+    &-number {
+      font-size: 24px;
+      line-height: 1.4em;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+
+      @include to(1440px) {
+        font-size: 22px;
+      }
+    }
+  }
+}

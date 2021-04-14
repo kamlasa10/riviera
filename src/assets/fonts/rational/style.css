@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Rational';
+    src: local('Rational Display SemiBold'), local('Rational-Display-SemiBold'),
+        url('RationalDisplay-SemiBold.woff2') format('woff2'),
+        url('RationalDisplay-SemiBold.woff') format('woff'),
+        url('RationalDisplay-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }

@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Rational';
+  src: local('Rational Display Light'), local('Rational-Display-Light'),
+  url('../fonts/rational/RationalDisplay-Light.woff2') format('woff2'),
+  url('../fonts/rational/RationalDisplay-Light.woff') format('woff'),
+  url('../fonts/rational/RationalDisplay-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rational';
+  src: local('Rational Display SemiBold'), local('Rational-Display-SemiBold'),
+  url('../fonts/rational/RationalDisplay-SemiBold.woff2') format('woff2'),
+  url('../fonts/rational/RationalDisplay-SemiBold.woff') format('woff'),
+  url('../fonts/rational/RationalDisplay-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+
