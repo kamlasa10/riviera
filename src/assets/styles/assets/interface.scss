@@ -8,6 +8,7 @@
 	z-index: 30;
 	.page__content {
 		flex-grow: 1;
+		padding-top: 120px;
 	}
 	.page__footer-wrapper {
 		flex-shrink: 0;
@@ -45,6 +46,9 @@
 
 	@include to(1440px) {
 		font-size: 45px;
+	}
+	@include to(575px){
+		font-size: 28px;
 	}
 }
 
@@ -95,6 +99,29 @@
 			svg {
 				fill: #9bb8d3;
 			}
+		}
+	}
+	@include to(575px){
+		&__arrow {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		&__arrow svg {
+			width: 10px;
+			height: 8px;
+		}
+		&__left {
+			transform: rotate(180deg) translateY(0px);
+			margin-right: 13px;
+		}
+	
+		&__right {
+			transform: translateY(0px);
+		}
+		&__decor {
+			width: 3px;
+			height: 3px;
 		}
 	}
 }
