@@ -182,17 +182,21 @@ window.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    $('.js-btn-top').click((e) => {
-        if($(window).width() > 1025) {
-            window.locoScroll.scrollTo(0)
-            return
-        }
+    // $('.js-btn-top').click((e) => {
+    //     if($(window).width() > 1025) {
+    //         window.locoScroll.scrollTo(0)
+    //         return
+    //     }
 
-        $('html, body').stop().animate({
-            scrollTop: 0
-        }, 1000)
+    //     $('html, body').stop().animate({
+    //         scrollTop: 0
+    //     }, 1000)
+    // })
+    document.querySelectorAll('.js-btn-top').forEach(el=>{
+        el.addEventListener('click',function(evt){
+            if (locoScroll !== undefined) locoScroll.scrollTo(0);
+        });
     })
-
     $('[name="phone"]')[0].addEventListener("keyup", (e) => {
         mask('[data-phone]', "(000) 000-00-00", e);
     });
@@ -693,4 +697,13 @@ doublePartImages.forEach(paralaxImg => {
         },
 
     });
-})
+});
+
+
+document.querySelector('[data-nav-close]').addEventListener('click',function(evt){
+    document.querySelector('[data-navigation]').classList.remove('active');
+});
+document.querySelector('[data-menu-call]').addEventListener('click',function(evt){
+   document.querySelector('[data-navigation]').classList.toggle('active');
+   document.querySelector('.header').classList.toggle('not-on-top');
+});

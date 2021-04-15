@@ -41,6 +41,11 @@
       color: #1D252D;
     }
   }
+  @include to(768px){
+    &__image {
+      width: 50%;
+    }
+  }
   @include to(575px){
     display: flex;
     flex-direction: column;
@@ -463,7 +468,7 @@
       transform: translateX(100%);
       transition: all .35s ease-out;
       padding: 15px 17px;
-      border-left: 1px solid #1D252D;
+      border-left: 1px solid #9BB8D3;
       background-color: rgba(#9BB8D3, .76);
       position: absolute;
       bottom: 0;

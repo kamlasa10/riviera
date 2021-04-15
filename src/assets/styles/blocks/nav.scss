@@ -1,3 +1,53 @@
 .nav {
   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  background-color: #1d252d;
+  z-index: 20;
+  &.active {
+    display: flex;
+  }
+  &__item,
+  &__link {
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  &__close {
+    position: absolute;
+    right: 26px;
+    top: 60px;
+    width: 23px;
+    height: 23px;
+    padding: 0;
+    fill:#82a7ca;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__text {
+    color: #9BB8D3;
+    font-size: 20px;
+    font-family: "Rational", "Arial", "sans-serif";
+  }
+  &__socials {
+    display: flex !important;
+    justify-content: center;
+  }
+  &__logo {
+    width: 170px;
+    height: 60px;
+    margin: 60px auto 40px auto;
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: #82a7ca;
+    }
+  }
 }
