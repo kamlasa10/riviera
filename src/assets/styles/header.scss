@@ -42,6 +42,9 @@
     @include to(1440px) {
       font-size: 19px;
     }
+    @include to(950px){
+      display: none;
+    }
   }
 
   &__phone {
@@ -59,6 +62,40 @@
       @include to(1440px) {
         font-size: 22px;
       }
+      @include to(575px){
+        font-size: 18px;
+      }
     }
+  }
+
+  @include to(575px){
+    &__phone {
+      margin-right: auto;
+      margin-left: 35px;
+    }
+    &__phone-text {
+      font-size: 13px;
+    }
+    .socials {
+      display: none;
+    }
+    &__logo { 
+      width: 107px;
+      height: 54px;
+    }
+  }
+  @include to(375px){
+    &__phone{
+
+      margin-left: 15px;
+    }
+  }
+}
+
+
+
+@include from(576px){
+  .desktop-off {
+    display: none;
   }
 }

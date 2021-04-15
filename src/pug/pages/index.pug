@@ -23,17 +23,19 @@ block scripts
 block content
 	.scroller
 		.promo(data-section="first")
+			.promo__image
+				img(src="./assets/images/promo-img.png" data-double-part-block)
 			.container
 				.promo__title NEW <span>QUALITY</span> OF LIFE
-		.mission
+		.mission(data-section="second")
 			.container
 				.mission__left
-					.mission__title Our mission
-					.mission__decor
+					.mission__title(data-slide-left) Our mission
+					.mission__decor(data-slide-left)
 						<svg xmlns="http://www.w3.org/2000/svg" width="32.102" height="25.993" viewBox="0 0 32.102 25.993"><defs></defs><g transform="translate(0 0)"><path d="M-1146.631-1007.5v-12.218h-12.218v8.624a24.593,24.593,0,0,0,1.677,9.223,24.588,24.588,0,0,0,5.63,8.146l4.552-3.594q-4.672-5.152-5.271-10.182Zm-19.884,0v-12.218h-12.218v8.624a24.593,24.593,0,0,0,1.677,9.223,24.588,24.588,0,0,0,5.63,8.146l4.552-3.594q-4.672-5.152-5.271-10.182Z" transform="translate(1178.733 1019.715)"/></g></svg>
-					.mission__text Місія Riviera Estate – створювати продуманий, нестандартний та висококласний заміський простір для життя людей, що цінують якість у кожній деталі
+					.mission__text(data-slide-left) Місія Riviera Estate – створювати продуманий, нестандартний та висококласний заміський простір для життя людей, що цінують якість у кожній деталі
 				.mission__right
-					+svg('nav-logo')
+					+svg('nav-logo')(data-slide-right)
 	.projects
 		.container
 			.projects__title.title Our projects

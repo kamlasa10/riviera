@@ -1,4 +1,49 @@
 @@include('./libs.js');
+
+const locoScroll = new LocomotiveScroll({
+    el: document.querySelector('.page__inner'),
+    smooth: true,
+    smoothMobile: false,
+    inertia: 1,
+    lerp: 0.2,
+    getDirection: true,
+    resetNativeScroll: false,
+    onUpdate: function(some) {
+
+    }
+});
+locoScroll.on("scroll", (position, limit, speed, direction) => {
+    ScrollTrigger.update;
+    if (position.scroll.y > document.documentElement.clientWidth) {
+        window.canvasEffectInterval && clearInterval(window.canvasEffectInterval);
+        window.removeFirstPageEffect && window.removeFirstPageEffect();
+    }
+    // position.scroll.y > 150 ?
+    //     handleVisibilityOnScroll([
+    //         [header, 'not-on-top'],
+    //         [document.querySelector('.up-arrow'), 'headroom--not-top'],
+    //     ], 'down') :
+    //     handleVisibilityOnScroll([
+    //         [header, 'not-on-top'],
+    //         [document.querySelector('.up-arrow'), 'headroom--not-top'],
+    //     ]);
+});
+
+ScrollTrigger.scrollerProxy(document.body, {
+    scrollTop(value) {
+        return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+    }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+    getBoundingClientRect() {
+        return {
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+    },
+    // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+    pinType: document.body.style.transform ? "transform" : "fixed"
+});
 gsap.registerPlugin(ScrollTrigger);
 
 function mask(inputName, mask, evt) {
@@ -292,6 +337,11 @@ window.addEventListener('DOMContentLoaded', () => {
         return tl
     }
 
+    function animateForSecondScreen() {
+        const tl = gsap.timeline()
+        return tl
+    }
+
     function animateForThreeScreen() {
         const tl = gsap.timeline()
 
@@ -301,20 +351,26 @@ window.addEventListener('DOMContentLoaded', () => {
         }, {
             y: 0,
             opacity: 1,
-            duration: 1
+            duration: 1,
         })
         .fromTo('.projects__content--1 .projects__left', {
-            x: '-100%'
+            x: '-40%',
+            autoAlpha: 0,
         }, {
             x: 0,
-            duration: 1
-        }, 0.7)
+            duration: 1.5,
+            autoAlpha: 1,
+            ease: Power4.easeInOut
+        }, '<')
         .fromTo('.projects__content--1 .projects__right', {
-            x: '100%'
+            x: '40%',
+            autoAlpha: 0,
         }, {
             x: 0,
-            duration: 1
-        }, 0.6)
+            duration: 1.5,
+            autoAlpha: 1,
+            ease: Power4.easeInOut
+        }, '<')
 
         return tl
     }
@@ -323,16 +379,22 @@ window.addEventListener('DOMContentLoaded', () => {
         const tl = gsap.timeline()
 
         tl.fromTo('.projects__content--2 .projects__left', {
-            x: '100%'
+            x: '35%',
+            autoAlpha: 0
         }, {
             x: 0,
-            duration: 1
+            duration: 1.5,
+            autoAlpha: 1,
+            ease: Power4.easeInOut
         }, 0.6)
         .fromTo('.projects__content--2 .projects__right', {
-            x: '-100%'
+            x: '-35%',
+            autoAlpha: 0
         }, {
             x: 0,
-            duration: 1
+            duration: 1.5,
+            autoAlpha: 1,
+            ease: Power4.easeInOut
         }, 0.7)
 
         return tl
@@ -466,6 +528,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const animateObj = {
         first: animateForFirstScreen,
+        second: animateForSecondScreen,
         three: animateForThreeScreen,
         four: animateForFourScreen,
         five: animateForFiveScreen,
@@ -481,6 +544,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
         switch (animationName) {
             case 'first': {
+                createScrollTrigger({
+                    trigger: sec
+                }, fn)
+                break
+            }
+            case 'second': {
                 createScrollTrigger({
                     trigger: sec
                 }, fn)
@@ -538,4 +607,69 @@ window.addEventListener('DOMContentLoaded', () => {
             ...opts,
         })
     }
+})
+
+
+
+const amplitude = document.documentElement.clientWidth < 576 ? 20 : 40;
+const doublePartImages = document.querySelectorAll('[data-double-part-block]');
+const slideLeftImages = document.querySelectorAll('[data-slide-left]');
+const slideRightImages = document.querySelectorAll('[data-slide-right]');
+slideRightImages.forEach(paralaxImg => {
+    let imgToAnimate = paralaxImg.querySelector('.double-part-block__img-main img') || paralaxImg;
+    let height = imgToAnimate.getBoundingClientRect().height;
+    gsap.set(paralaxImg, { autoAlpha: 0, x: '100%' })
+    // gsap.set(imgToAnimate, { scale: scaleCoef })
+    ScrollTrigger.create({
+        trigger: paralaxImg,
+        end: "bottom",
+        onEnter: self => {
+            if (!imgToAnimate.cliPathed) {
+                imgToAnimate.cliPathed = true;
+                gsap.to(paralaxImg, { autoAlpha: 1, x: 0,ease: Power4.easeInOut, duration: 2.5 })
+            }
+        },
+
+    });
+})
+slideLeftImages.forEach(paralaxImg => {
+    let imgToAnimate = paralaxImg.querySelector('.double-part-block__img-main img') || paralaxImg;
+    let height = imgToAnimate.getBoundingClientRect().height;
+    gsap.set(paralaxImg, { autoAlpha: 0, x: '-100%' })
+    // gsap.set(imgToAnimate, { scale: scaleCoef })
+    ScrollTrigger.create({
+        trigger: paralaxImg,
+        end: "bottom",
+        onEnter: self => {
+            if (!imgToAnimate.cliPathed) {
+                imgToAnimate.cliPathed = true;
+                gsap.to(paralaxImg, { autoAlpha: 1, x: 0,ease: Power4.easeInOut, duration: 2 })
+            }
+        },
+
+    });
+})
+doublePartImages.forEach(paralaxImg => {
+    let imgToAnimate = paralaxImg.querySelector('.double-part-block__img-main img') || paralaxImg;
+    let height = imgToAnimate.getBoundingClientRect().height;
+    let scaleCoef = (height + (amplitude)) / height;
+    gsap.set('.promo__title', { autoAlpha: 0, x: 50 })
+    // gsap.set(imgToAnimate, { scale: scaleCoef })
+    gsap.set(imgToAnimate, { scale: scaleCoef })
+    gsap.set(imgToAnimate, { webkitClipPath: `polygon(100% 0px, 100% 0px, 100% 100%, 100% 100%)`, });
+    ScrollTrigger.create({
+        trigger: paralaxImg,
+        end: "bottom",
+        onEnter: self => {
+            if (!imgToAnimate.cliPathed) {
+                gsap.to(imgToAnimate, { webkitClipPath: `polygon(100% 0px, 0px 0px, 0px 100%, 100% 100%)`, ease: Power4.easeInOut, duration: 1.5 });
+                imgToAnimate.cliPathed = true;
+                gsap.to('.promo__title', { autoAlpha: 1, x: 0,ease: Power4.easeInOut, duration: 1.5 })
+            }
+        },
+        onUpdate: self => {
+            gsap.to(imgToAnimate, { scale: 1 + self.progress / 10, y: amplitude / -2 + self.progress * amplitude, duration: 0.25 });
+        },
+
+    });
 })
