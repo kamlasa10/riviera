@@ -2,11 +2,15 @@
   position: fixed;
   z-index: 5;
   width: 100%;
-  height: $header-height;
   --header-height: 120px;
+  height: var(--header-height);
   transition: all .4s;
   background-color: #1D252D;
-
+  @include to(575px){
+    &.not-on-top {
+      --header-height: 75px;
+    }
+  }
   .container {
     height: 100%;
   }

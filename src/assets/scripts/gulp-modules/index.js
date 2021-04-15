@@ -12,21 +12,26 @@ const locoScroll = new LocomotiveScroll({
 
     }
 });
+function handleVisibilityOnScroll(elems = [], direction = 'up') {
+    elems.forEach(elem => {
+        direction === 'down' ?
+            elem[0].classList.add(elem[1]) :
+            elem[0].classList.remove(elem[1]);
+    })
+}
 locoScroll.on("scroll", (position, limit, speed, direction) => {
     ScrollTrigger.update;
     if (position.scroll.y > document.documentElement.clientWidth) {
         window.canvasEffectInterval && clearInterval(window.canvasEffectInterval);
         window.removeFirstPageEffect && window.removeFirstPageEffect();
     }
-    // position.scroll.y > 150 ?
-    //     handleVisibilityOnScroll([
-    //         [header, 'not-on-top'],
-    //         [document.querySelector('.up-arrow'), 'headroom--not-top'],
-    //     ], 'down') :
-    //     handleVisibilityOnScroll([
-    //         [header, 'not-on-top'],
-    //         [document.querySelector('.up-arrow'), 'headroom--not-top'],
-    //     ]);
+    position.scroll.y > 150 ?
+        handleVisibilityOnScroll([
+            [document.querySelector('.header'), 'not-on-top'],
+        ], 'down') :
+        handleVisibilityOnScroll([
+            [document.querySelector('.header'), 'not-on-top'],
+        ]);
 });
 
 ScrollTrigger.scrollerProxy(document.body, {
@@ -118,15 +123,31 @@ window.addEventListener('DOMContentLoaded', () => {
 
     new Swiper('.js-partners__slider', {
         speed: 600,
-        slidesPerView: 4,
+        // slidesPerView: 4,
         allowTouchMove: false,
-        slidesPerGroup: 4,
 
         navigation: {
             nextEl: '.js-partners-right',
             prevEl: '.js-partners-left',
             disabledClass: 'lock'
         },
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+                // slidesPerColumn: 2,
+            },
+            768: {
+                slidesPerGroup: 2,
+                slidesPerView: 2,
+                // slidesPerColumn: 1,
+            },
+            1024: {
+                slidesPerGroup: 4,
+                slidesPerView: 4,
+                // slidesPerColumn: 1,
+            },
+          }
     });
 
     new Swiper('.js-projects-top', {
