@@ -59,6 +59,7 @@
 	&__left {
 		transform: rotate(180deg) translateY(1px);
 		margin-right: 13px;
+		padding: 0;
 	}
 
 	&__right {
@@ -88,7 +89,7 @@
 				fill: #000000;
 			}
 		}
-
+		
 		&.lock {
 			cursor: default;
 

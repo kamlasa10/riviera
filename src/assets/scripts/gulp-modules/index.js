@@ -153,7 +153,7 @@ window.addEventListener('DOMContentLoaded', () => {
     new Swiper('.js-projects-top', {
         speed: 600,
         slidesPerView: 1,
-        allowTouchMove: false,
+        loop: true, 
         navigation: {
             nextEl: '.js-projects-top-right',
             prevEl: '.js-projects-top-left',
@@ -169,7 +169,7 @@ window.addEventListener('DOMContentLoaded', () => {
     new Swiper('.js-projects2', {
         speed: 600,
         slidesPerView: 1,
-        allowTouchMove: false,
+        loop: true, 
         navigation: {
             nextEl: '.js-projects2-right',
             prevEl: '.js-projects2-left',
@@ -199,6 +199,7 @@ window.addEventListener('DOMContentLoaded', () => {
     })
     $('[name="phone"]')[0].addEventListener("keyup", (e) => {
         mask('[data-phone]', "(000) 000-00-00", e);
+        if (locoScroll !== undefined) locoScroll.update();
     });
 
     let currentLanguage = $('html').attr('lang')
@@ -242,6 +243,7 @@ window.addEventListener('DOMContentLoaded', () => {
     function validateForm(inputs) {
         console.log(inputs)
         let isValid = true;
+
         inputs.each(function () {
             $(this).on("input", (e) => {
                 if ($(e.target).val().replace(/\s+/g, "") && $(e.target).attr('name') === 'name'  && e.currentTarget.value.length < 2) {
@@ -289,7 +291,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 isValid = false;
             }
         });
-
+        if (locoScroll !== undefined) locoScroll.update();
         return isValid;
     }
 
@@ -317,12 +319,12 @@ window.addEventListener('DOMContentLoaded', () => {
                 en: "Error on server try again later"
             },
         };
-
+        console.log(selectorForm);
         $.ajax({
             url: url, //url страницы (action_ajax_form.php)
             type: "POST", //метод отправки
             dataType: "html", //формат данных
-            data: $(selectorForm).find('form').serialize(), // Сеарилизуем объект
+            data: selectorForm.serialize(), // Сеарилизуем объект
             success: function (response) {
                 //Данные отправлены успешно
                 $('.form__status').remove()
@@ -699,11 +701,22 @@ doublePartImages.forEach(paralaxImg => {
     });
 });
 
+function openMenu(){
+    const menu = document.querySelector('[data-navigation]');
+    menu.classList.toggle('active');
+    gsap.from(menu, { x: '100vw', skewX: 3, ease: Power4.easeOut, duration: 0.75 });
+    document.body.style.overflow = 'hidden';
+}
+function closeMenu(){
+    const menu = document.querySelector('[data-navigation]');
+    gsap.to(menu, { skewX: -3, x: '100vw', clearProps: 'all', onComplete: () => { menu.classList.remove('active') }, duration: 0.5 });
+    
+    document.body.style.overflow = '';
+}
 
-document.querySelector('[data-nav-close]').addEventListener('click',function(evt){
-    document.querySelector('[data-navigation]').classList.remove('active');
-});
-document.querySelector('[data-menu-call]').addEventListener('click',function(evt){
-   document.querySelector('[data-navigation]').classList.toggle('active');
-   document.querySelector('.header').classList.toggle('not-on-top');
-});
+document.querySelector('[data-nav-close]').addEventListener('click',closeMenu);
+document.querySelector('[data-menu-call]').addEventListener('click', openMenu);
+
+const navItems = document.querySelectorAll('.nav__item');
+navItems.forEach(el=> el.addEventListener('click', closeMenu));
+

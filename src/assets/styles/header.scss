@@ -69,6 +69,9 @@
       @include to(575px){
         font-size: 18px;
       }
+      @include to(375px){
+        font-size: 14px;
+      }
     }
   }
 
