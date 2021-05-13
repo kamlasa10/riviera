@@ -21,6 +21,7 @@
     // background: url('../images/promo-img.png') no-repeat center/cover;
     height: 100%;
     overflow: hidden;
+    
   }
   &__image img {
     position: absolute;
@@ -29,6 +30,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    
   }
   &__title {
     font-size: 60px;
@@ -315,7 +317,7 @@
       width: 100%;
       height: auto;
       object-fit: contain;
-      transition: all .4s ease-in;
+      transition: all.2s ease-in-out;
     }
   }
 
@@ -325,6 +327,7 @@
 
     &:hover img {
       transform: scale(1.1);
+      transition: 1.3s ease-in-out;
     }
   }
   @include to(575px){
@@ -348,6 +351,7 @@
 }
 
 .partners {
+  margin-top: -2px;
   background-color: #1D252D;
   padding: 160px 0;
 
@@ -1009,4 +1013,18 @@
       padding-left: 25px;
     }
   }
+}
+
+
+.c-scrollbar {
+  z-index: 10000;
+}
+.c-scrollbar_thumb {
+  background-color: #ffffff;
+  opacity: 1;
+}
+
+
+.projects__pagination-bottom .swiper-pagination {
+  display: none;
 }

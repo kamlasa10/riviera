@@ -12,6 +12,39 @@ block variable
 				link: pagesLink[0].about
 			}
 		]
+		var teammates = [
+			['Володимир Лімаков','Співзасновник','Останні 13 років успішно керує проєктами у заміській нерухомості. До 2019 рік обіймав посаду CEO флагманського проєкту Riviera Estate — Riviera Village.',],
+			['Сергій Слюсаренко',
+			'Співзасновник',
+			'Володіє 50% акцій компанії Riviera Estate та є членом наглядової ради компанії. Спеціаліст у фінансовій та юридичній сферах галузі підприємництва.',],
+			['Дар’я Кухаренко',
+			'Генеральна директорка',
+			'Має 20-річний досвід розвитку великих девелоперських проєктів, серед яких ТРЦ Ocean Plaza, ЖК «Новопечерські Липки», ЖК «Бульвар Фонтанів», ЖК White Lines, Kyiv Food Market та ін. ',],
+			['Дмитро Жиглінський',
+			'Фінансовий директор',
+			'Відповідає за питання, пов\'язаними з інвесторами, банками, звітністю та фінансовим плануванням. Спеціаліст з оцінки непогашених кредитів у фінустановах, а також контролю витрат.',],
+
+
+			['Андрій Вишняк',
+			'Директор з розвитку бізнесу',
+			'Відповідає за менеджмент нових проєктів. Фахівець у галузях фінансів, банківської справи, інформаційних технологій та державних відносин. Спеціалізується на антикризовому менеджменті.',],
+
+			['Маргарита Аветисян',
+			'Керівниця юридичного відділу',
+			'Адвокат, доктор юридичних наук та автор 26 наукових публікацій з корпоративного, цивільного та господарського права. Досвідчена у юридичному супроводі операцій з нерухомістю.',],
+			['Максим Татаренко',
+			'Головний архітектор',
+			'З 2009 року проєктує житлові комплекси, офісні центри, торгові центри та котеджні містечка. Серед його проєктів — ТРЦ Ocean Plaza, ЖК Smart Plaza Polytekh та Obolon, ЖК White Lines.',],
+			['Андрій Поляков',
+			'Керівник відділу продажів',
+			'Спеціалізується на житлових комплексах комфорт + та бізнес-класу, має досвід керівництва 6 офісами продажів одночасно. Відповідав за продажі в ЖК Lucky Land, ЖК A136 та ЖК Park Lake City.',],
+			['Ірина Кириленко',
+			'Директорка з маркетингу',
+			'Є фахівцем з маркетингу новобудов з досвідом у продажах. Відповідала за виведення на ринок та просування ЖК Smart Plaza Polytekh та Smart Plaza Obolon, ЖК White Lines.',],
+			['Сергій Кучер',
+			'Проджект менеджер',
+			'Відповідальний за якість введених в експлуатацію об\'єктів. Досвідчений у плануванні як об\'єктів легкої промисловості, так і великих сільськогосподарських і нафтопереробних об\'єктів.',],
+		]
 	
 block meta
 	title= title_page
@@ -223,76 +256,19 @@ block content
 							+img('ui/partners-img4.svg')
 						.partners__slide.partners__slide--8
 							+img('ui/partners-img2.svg')
+	- 
+		
 	.team(data-section="eight" id="team")
 		.container
 			.team__title.title Our team
 			.team__content
-				.team__item
-					.team__img
-						+img('team-img.png')
-						.team__img-desc Рыбатекст используется дизайнерами, проектировщиками и фронтендерами, когда нужно быстро заполнить макеты или прототипы содержимым.
-					.team__name Volodymyr Limakov
-					.team__pos Сo-founder of Riviera Estate
-				.team__item
-					.team__img
-						+img('team-img2.png')
-						.team__img-desc Рыбатекст используется дизайнерами, проектировщиками и фронтендерами, когда нужно быстро заполнить макеты или прототипы содержимым.
-					.team__name Sergii Sliusarenko
-					.team__pos Сo-founder of Riviera Estate
-				.team__item
-					.team__img
-						+img('team-img3.png')
-						.team__img-desc Рыбатекст используется дизайнерами, проектировщиками и фронтендерами, когда нужно быстро заполнить макеты или прототипы содержимым.
-					.team__name Dariia Kukharenko
-					.team__pos CEO
-				.team__item
-					.team__img
-						+img('team-img4.png')
-						.team__img-desc Рыбатекст используется дизайнерами, проектировщиками и фронтендерами, когда нужно быстро заполнить макеты или прототипы содержимым.
-					.team__name Dmytro Zhyglinskyi
-					.team__pos CFO
-				.team__item
-					.team__img
-						+img('team-img5.png')
-						.team__img-desc Рыбатекст используется дизайнерами, проектировщиками и фронтендерами, когда нужно быстро заполнить макеты или прототипы содержимым.
-					.team__name Andrii Vyshniak
-					.team__pos Head of Business Development
-				.team__item
-					.team__img
-						+img('team-img6.png')
-						.team__img-desc Рыбатекст используется дизайнерами, проектировщиками и фронтендерами, когда нужно быстро заполнить макеты или прототипы содержимым.
-					.team__name Margarita Avetisyan
-					.team__pos Head of Legal Department
-				.team__item
-					.team__img
-						+img('team-img7.png')
-						.team__img-desc Рыбатекст используется дизайнерами, проектировщиками и фронтендерами, когда нужно быстро заполнить макеты или прототипы содержимым.
-					.team__name Maxim Tatarenko
-					.team__pos Chief Architect
-				.team__item
-					.team__img
-						+img('team-img8.png')
-						.team__img-desc Рыбатекст используется дизайнерами, проектировщиками и фронтендерами, когда нужно быстро заполнить макеты или прототипы содержимым.
-					.team__name Andrey Polyakov
-					.team__pos Head of Sales
-				.team__item
-					.team__img
-						+img('team-img9.png')
-						.team__img-desc Рыбатекст используется дизайнерами, проектировщиками и фронтендерами, когда нужно быстро заполнить макеты или прототипы содержимым.
-					.team__name Irina Kirilenko
-					.team__pos CMO
-				.team__item
-					.team__img
-						+img('team-img10.png')
-						.team__img-desc Рыбатекст используется дизайнерами, проектировщиками и фронтендерами, когда нужно быстро заполнить макеты или прототипы содержимым.
-					.team__name Sergii Kucher
-					.team__pos Project Manager
-				.team__item
-					.team__img
-						+img('team-img11.png')
-						.team__img-desc Рыбатекст используется дизайнерами, проектировщиками и фронтендерами, когда нужно быстро заполнить макеты или прототипы содержимым.
-					.team__name + еще один человек
-					.team__pos Project Manager
+				each val,index in teammates
+					.team__item
+						.team__img
+							img(src='./assets/images/team-img'+(index+1)+'.png')
+							.team__img-desc #{val[2]}
+						.team__name #{val[0]}
+						.team__pos #{val[1]}
 	.contacts(data-section="nine" id="contacts")
 		button(type="button").btn-top.js-btn-top
 			+svg('arrow')
@@ -304,7 +280,7 @@ block content
 					.contacts-form__title Зв'язатися з питань співпраці
 					.contacts-form__item
 						.contacts-form__block
-							input(type="text" name="name" placeholder="И'мя" class="contacts-form__input")
+							input(type="text" name="name" placeholder="І'мя" class="contacts-form__input")
 						.contacts-form__block
 							input(type="tel" placeholder="(380) 000-00-00" data-phone="true" name="phone" class="contacts-form__input")
 					button(class="contacts-form__btn btn--res submit__btn") надіслати

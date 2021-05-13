@@ -695,7 +695,7 @@ doublePartImages.forEach(paralaxImg => {
             }
         },
         onUpdate: self => {
-            gsap.to(imgToAnimate, { scale: 1 + self.progress / 10, y: amplitude / -2 + self.progress * amplitude, duration: 0.25 });
+            gsap.to(imgToAnimate, { scale: 1 + self.progress / 15, /*y: amplitude / -2 + self.progress * amplitude, duration: 0.25 */});
         },
 
     });
